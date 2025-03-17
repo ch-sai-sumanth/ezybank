@@ -4,11 +4,15 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.Timer;
 
 @Entity
 @Data
+@Table(name = "users")
 public class User {
 
     @Id
@@ -16,7 +20,7 @@ public class User {
     private Long id;
 
     @NotEmpty
-    private String username;
+    private String name;
 
     @NotEmpty
     private String password;
@@ -27,7 +31,7 @@ public class User {
     private String email;
 
     @NotEmpty
-    private String coutryCode;
+    private String countryCode;
 
     @NotEmpty
     @Column(unique = true)
@@ -35,12 +39,6 @@ public class User {
 
     @NotEmpty
     private String address;
-
-    @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at", nullable = false)
-    private LocalDateTime updatedAt;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Account account;

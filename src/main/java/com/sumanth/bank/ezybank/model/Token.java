@@ -22,7 +22,7 @@ public class Token {
     private String token;
 
     @NotNull
-    private Date createdAt;
+    private Date createdAt = new Date();
 
     @NotNull
     private Date expiredAt;

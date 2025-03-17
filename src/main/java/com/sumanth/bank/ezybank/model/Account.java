@@ -23,7 +23,7 @@ public class Account {
     @NotEmpty
     private String accountType="Savings";
 
-
+    private String accountStatus;
 
     @NotEmpty
     private String bankName="EzyBank";
