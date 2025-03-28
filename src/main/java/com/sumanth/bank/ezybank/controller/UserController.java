@@ -4,13 +4,11 @@ package com.sumanth.bank.ezybank.controller;
 import com.sumanth.bank.ezybank.dto.OtpRequest;
 import com.sumanth.bank.ezybank.dto.OtpVerificationRequest;
 import com.sumanth.bank.ezybank.exception.InvalidTokenException;
-import com.sumanth.bank.ezybank.model.LoginRequest;
+import com.sumanth.bank.ezybank.dto.LoginRequest;
 import com.sumanth.bank.ezybank.model.User;
 import com.sumanth.bank.ezybank.service.UserService;
-import com.sumanth.bank.ezybank.service.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -3,13 +3,11 @@ package com.sumanth.bank.ezybank.service;
 import com.sumanth.bank.ezybank.dto.OtpRequest;
 import com.sumanth.bank.ezybank.dto.OtpVerificationRequest;
 import com.sumanth.bank.ezybank.exception.InvalidTokenException;
-import com.sumanth.bank.ezybank.model.LoginRequest;
+import com.sumanth.bank.ezybank.dto.LoginRequest;
 import com.sumanth.bank.ezybank.model.User;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.servlet.ModelAndView;
-
-import java.net.http.HttpResponse;
 
 public interface UserService {
 
