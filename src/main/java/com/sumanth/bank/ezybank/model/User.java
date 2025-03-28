@@ -4,17 +4,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Timer;
 
 @Entity
 @Data
 @Table(name = "users")
 public class User {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -40,6 +34,8 @@ public class User {
     @NotEmpty
     private String address;
 
+    // Establishing a one-to-one relationship with the account
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private Account account;
+
 }

@@ -17,10 +17,9 @@ import java.time.temporal.ChronoUnit;
 import java.util.Random;
 import java.util.concurrent.CompletableFuture;
 
-
 @Service
 @RequiredArgsConstructor
-public class OtpServiceImpl implements OtpService{
+public class OtpServiceImpl implements OtpService {
 
     public static final int OTP_ATTEMPTS_LIMIT = 3;
     public static final int OTP_EXPIRY_MINUTES = 5;
@@ -35,7 +34,7 @@ public class OtpServiceImpl implements OtpService{
     private LocalDateTime otpLimitReachedTime = null;
 
     @Override
-    public String generateOtp(String accountNumber) {
+    public String generateOTP(String accountNumber) {
         if (!validationUtil.doesAccountExist(accountNumber)) {
             throw new AccountDoesNotExistException(ApiMessages.ACCOUNT_NOT_FOUND.getMessage());
         }
@@ -168,4 +167,6 @@ public class OtpServiceImpl implements OtpService{
 
         return expired;
     }
+
 }
+
