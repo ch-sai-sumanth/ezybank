@@ -130,7 +130,7 @@ public class TokenServiceImpl implements TokenService {
         }
     }
 
-
+    @Override
     public UserDetails loadUserByUsername(String accountNumber) throws UsernameNotFoundException {
         val user = userRepository.findByAccount_AccountNumber(accountNumber)
                 .orElseThrow(() -> new UsernameNotFoundException(
@@ -138,4 +138,5 @@ public class TokenServiceImpl implements TokenService {
 
         return withUsername(accountNumber).password(user.getPassword()).build();
     }
+
 }
