@@ -24,6 +24,7 @@ services:
   ezybank-app:
     build: .
     container_name: ezybank-app
+    restart: unless-stopped
     depends_on:
       postgres:
         condition: service_healthy
@@ -36,7 +37,7 @@ services:
       SPRING_JPA_SHOW_SQL: "true"
       SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
 
-      # SMTP Configuration
+      # SMTP Configuration (use environment variables instead)
       SPRING_MAIL_HOST: smtp.gmail.com
       SPRING_MAIL_PORT: 587
       SPRING_MAIL_USERNAME: your-email-address

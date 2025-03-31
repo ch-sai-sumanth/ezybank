@@ -36,10 +36,6 @@ build/
 .vscode/
 
 
-# Ignore Maven wrapper binaries (optional)
-.mvn/
-mvnw
-mvnw.cmd
 
 # Ignore IDE files
 .idea/
