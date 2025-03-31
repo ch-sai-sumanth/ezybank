@@ -31,7 +31,7 @@ EzyBank Portal is a comprehensive banking API that provides a wide range of fina
 - Password Encryption
 
 ### Database
-- MySQL Connector
+- PostgreSQL (Default database)
 - JPA/Hibernate
 
 ### Additional Libraries
@@ -48,6 +48,24 @@ EzyBank Portal is a comprehensive banking API that provides a wide range of fina
 ### Serialization
 - Jackson JSON
 - JAXB (XML Binding)
+
+## Database Configuration
+
+The project is configured to use **PostgreSQL** by default. However, you can easily switch to other databases by modifying the `application.properties` file:
+
+```properties
+# PostgreSQL Configuration (Default)
+spring.datasource.url=jdbc:postgresql://localhost:5432/ezybank
+spring.datasource.username=postgres
+spring.datasource.password=yourpassword
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+
+# MySQL Example (Alternative)
+# spring.datasource.url=jdbc:mysql://localhost:3306/ezybank
+# spring.datasource.username=root
+# spring.datasource.password=yourpassword
+# spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
+```
 
 ## Endpoints
 
