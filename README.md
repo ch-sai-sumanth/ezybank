@@ -13,6 +13,7 @@ EzyBank Portal is a comprehensive banking API that provides a wide range of fina
 - Transaction History
 - Secure PIN Management
 - Password Reset Functionality
+- Email Notifications for Important Transactions
 
 ## Technologies Used
 
@@ -67,6 +68,28 @@ spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
 # spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
 ```
 
+## SMTP Configuration (Email Notifications)
+
+EzyBank uses SMTP to send email notifications for password resets, transactions, and other important alerts.
+
+```properties
+# SMTP Configuration
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=your-email@gmail.com
+spring.mail.password=your-app-password
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+```
+
+### How to Get Your SMTP Password (App Password for Gmail)
+1. Go to [Google Account Security](https://myaccount.google.com/security)
+2. Enable **2-Step Verification** if not already enabled.
+3. Under "Signing in to Google," click **App Passwords**.
+4. Select "Mail" as the app and "Custom" as the device name (e.g., "EzyBank API").
+5. Click "Generate" and copy the provided app password.
+6. Use this app password in `spring.mail.password` instead of your actual Gmail password.
+
 ## Endpoints
 
 ### Authentication Endpoints
@@ -100,7 +123,7 @@ The API implements global exception handling for:
 ### Prerequisites
 - Java 17
 - Maven
-- MySQL Database
+- PostgreSQL Database
 
 ### Installation
 
