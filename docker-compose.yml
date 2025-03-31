@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres
+    container_name: ezybank_db
+    restart: always
+    environment:
+      POSTGRES_DB: ezybank_db
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: Test123!
+    ports:
+      - "5432:5432"
+    networks:
+      - easybank-network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U root -d ezybank_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  ezybank-app:
+    build: .
+    container_name: ezybank-app
+    depends_on:
+      postgres:
+        condition: service_healthy
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/ezybank_db
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: Test123!
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: org.postgresql.Driver
+      SPRING_APPLICATION_NAME: ezybank
+      SPRING_JPA_SHOW_SQL: "true"
+      SPRING_JPA_PROPERTIES_HIBERNATE_FORMAT_SQL: "true"
+
+      # SMTP Configuration
+      SPRING_MAIL_HOST: smtp.gmail.com
+      SPRING_MAIL_PORT: 587
+      SPRING_MAIL_USERNAME: your-email-address
+      SPRING_MAIL_PASSWORD: your-smtp-password
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_AUTH: "true"
+      SPRING_MAIL_PROPERTIES_MAIL_SMTP_STARTTLS_ENABLE: "true"
+
+    ports:
+      - "8180:8180"
+    networks:
+      - easybank-network
+
+networks:
+  easybank-network:
+
+volumes:
+  postgres_data:
